@@ -1,5 +1,4 @@
-﻿
-using CarRenting.BusinessLogic;
+﻿using CarRenting.BusinessLogic;
 using CarRenting.BusinessLogic.Abstractions;
 using CarRenting.DataAccess;
 using CarRenting.DataAccess.Abstractions;
@@ -18,9 +17,10 @@ namespace CarRenting.Web.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services,
             IConfiguration configuration) =>
-            services.AddSqlServer<CarRentingDbContext>(configuration.GetConnectionString("SqlConnection"));
-        //.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-        //.AddEntityFrameworkStores<CarRentingDbContext>();
+            services.AddSqlServer<CarRentingDbContext>(
+                    configuration.GetConnectionString("CarRentingDbContextConnection"))
+                .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<CarRentingDbContext>();
 
         public static void RegisterMapsterConfiguration(this IServiceCollection _)
         {

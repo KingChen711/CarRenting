@@ -1,7 +1,13 @@
+using CarRenting.Web.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureUnitOfWork();
+builder.Services.ConfigureServiceFactory();
+builder.Services.RegisterMapsterConfiguration();
 
 var app = builder.Build();
 
@@ -17,6 +23,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
