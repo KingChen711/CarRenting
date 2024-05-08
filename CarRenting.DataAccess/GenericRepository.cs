@@ -6,9 +6,9 @@ namespace CarRenting.DataAccess
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected ApplicationDbContext Context;
+        protected CarRentingDbContext Context;
 
-        protected GenericRepository(ApplicationDbContext context)
+        protected GenericRepository(CarRentingDbContext context)
             => Context = context;
 
         public IQueryable<T> FindAll(bool trackChanges) => Context.Set<T>();

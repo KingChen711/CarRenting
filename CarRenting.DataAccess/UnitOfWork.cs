@@ -4,10 +4,10 @@ namespace CarRenting.DataAccess
 {
     public sealed class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CarRentingDbContext _context;
         //private readonly Lazy<ICompanyRepository> _companyRepository;
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(CarRentingDbContext context)
         {
             _context = context;
             //_companyRepository = new Lazy<ICompanyRepository>(() => new

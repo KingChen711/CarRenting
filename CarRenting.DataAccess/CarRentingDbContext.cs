@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarRenting.DataAccess;
 
-public class ApplicationDbContext : IdentityDbContext<User>
+public class CarRentingDbContext : IdentityDbContext<User>
 {
-    public ApplicationDbContext(DbContextOptions options) : base(options) { }
+    public CarRentingDbContext(DbContextOptions options) : base(options) { }
 
     //public DbSet<Company>? Companies { get; set; }
 
