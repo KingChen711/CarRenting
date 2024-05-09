@@ -5,6 +5,7 @@
 
 using CarRenting.BusinessLogic.Abstractions;
 using CarRenting.Models.Entities;
+using CarRenting.Models.Enums;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,6 @@ using Microsoft.AspNetCore.WebUtilities;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
-using CarRenting.Models.Enums;
 
 namespace CarRenting.Web.Areas.Identity.Pages.Account
 {
@@ -118,7 +118,7 @@ namespace CarRenting.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    await _userManager.AddToRoleAsync(user, Role.CUSTOMER);
+                    await _userManager.AddToRoleAsync(user, RoleAccount.CUSTOMER);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

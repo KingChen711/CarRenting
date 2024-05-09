@@ -1,28 +1,43 @@
-﻿using CarRenting.Models.Enums;
-using Microsoft.AspNetCore.Identity;
+﻿using CarRenting.Models.Entities;
+using CarRenting.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CarRenting.DataAccess.Configurations;
 
-public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
+public class RoleConfiguration : IEntityTypeConfiguration<Role>
 {
-    public void Configure(EntityTypeBuilder<IdentityRole> builder)
+    public void Configure(EntityTypeBuilder<Role> builder)
     {
+        builder
+            .Property(e => e.RoleId)
+            .HasDefaultValueSql("NEWSEQUENTIALID()")
+            .ValueGeneratedOnAdd();
+
+        builder
+            .HasIndex(e => e.RoleId)
+            .IsUnique();
+
         builder.HasData(
-            new IdentityRole
+            new Role
             {
-                Name = Role.CUSTOMER,
+                Id = 1,
+                RoleId = new Guid(),
+                Name = RoleAccount.CUSTOMER,
                 NormalizedName = "CUSTOMER"
             },
-            new IdentityRole
+            new Role
             {
-                Name = Role.EMPLOYEE,
+                Id = 2,
+                RoleId = new Guid(),
+                Name = RoleAccount.EMPLOYEE,
                 NormalizedName = "Employee"
             },
-            new IdentityRole
+            new Role
             {
-                Name = Role.ADMINISTRATOR,
+                Id = 3,
+                RoleId = new Guid(),
+                Name = RoleAccount.ADMINISTRATOR,
                 NormalizedName = "ADMINISTRATOR"
             }
         );

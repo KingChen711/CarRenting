@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarRenting.DataAccess;
 
-public class CarRentingDbContext : IdentityDbContext<User>
+public class CarRentingDbContext : IdentityDbContext<User, Role, int>
 {
     public CarRentingDbContext(DbContextOptions options) : base(options)
     {
@@ -18,5 +18,6 @@ public class CarRentingDbContext : IdentityDbContext<User>
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
     }
 }

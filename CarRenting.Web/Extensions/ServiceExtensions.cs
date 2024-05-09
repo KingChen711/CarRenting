@@ -21,7 +21,7 @@ namespace CarRenting.Web.Extensions
             services.AddSqlServer<CarRentingDbContext>(
                     configuration.GetConnectionString("CarRentingDbContextConnection"))
                 .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
+                .AddRoles<Role>()
                 .AddEntityFrameworkStores<CarRentingDbContext>();
 
         public static void RegisterMapsterConfiguration(this IServiceCollection _)
@@ -38,7 +38,7 @@ namespace CarRenting.Web.Extensions
 
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            services.AddIdentity<User, IdentityRole>(o =>
+            services.AddIdentity<User, Role>(o =>
                 {
                     o.Password.RequireDigit = true;
                     o.Password.RequireLowercase = false;

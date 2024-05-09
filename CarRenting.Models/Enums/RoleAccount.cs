@@ -1,6 +1,6 @@
 ﻿namespace CarRenting.Models.Enums;
 
-public static class Role
+public static class RoleAccount
 {
     public const string CUSTOMER = "Customer";
     public const string ADMINISTRATOR = "Administrator";
