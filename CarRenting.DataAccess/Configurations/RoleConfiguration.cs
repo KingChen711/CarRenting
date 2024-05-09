@@ -22,21 +22,21 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
             new Role
             {
                 Id = 1,
-                RoleId = new Guid(),
+                // RoleId = new Guid(), thêm cái này vào cũng ko giải quyết được cái lỗi migration Role
                 Name = RoleAccount.CUSTOMER,
                 NormalizedName = "CUSTOMER"
             },
             new Role
             {
                 Id = 2,
-                RoleId = new Guid(),
+                // RoleId = new Guid(),
                 Name = RoleAccount.EMPLOYEE,
                 NormalizedName = "Employee"
             },
             new Role
             {
                 Id = 3,
-                RoleId = new Guid(),
+                // RoleId = new Guid(),
                 Name = RoleAccount.ADMINISTRATOR,
                 NormalizedName = "ADMINISTRATOR"
             }

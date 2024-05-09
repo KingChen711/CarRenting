@@ -1,4 +1,5 @@
-﻿using FluentEmail.Core;
+﻿using CarRenting.Models.Entities;
+using FluentEmail.Core;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace CarRenting.BusinessLogic;
