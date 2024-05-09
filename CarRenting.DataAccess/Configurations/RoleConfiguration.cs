@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CarRenting.Models.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,17 +12,17 @@ public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
         builder.HasData(
             new IdentityRole
             {
-                Name = "Customer",
+                Name = Role.CUSTOMER,
                 NormalizedName = "CUSTOMER"
             },
             new IdentityRole
             {
-                Name = "Staff",
-                NormalizedName = "STAFF"
+                Name = Role.EMPLOYEE,
+                NormalizedName = "Employee"
             },
             new IdentityRole
             {
-                Name = "Administrator",
+                Name = Role.ADMINISTRATOR,
                 NormalizedName = "ADMINISTRATOR"
             }
         );
