@@ -1,6 +1,8 @@
-﻿namespace CarRenting.BusinessLogic.Abstractions;
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
+
+namespace CarRenting.BusinessLogic.Abstractions;
 
 public interface IServiceFactory
 {
-    IAuthenticationService AuthenticationService { get; }
+    IEmailSender Email { get; }
 }

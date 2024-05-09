@@ -8,6 +8,8 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureUnitOfWork();
 builder.Services.ConfigureServiceFactory();
 builder.Services.RegisterMapsterConfiguration();
+builder.Services.AddFluentEmail(builder.Configuration);
+
 
 var app = builder.Build();
 

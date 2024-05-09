@@ -1,24 +1,21 @@
 ﻿using CarRenting.BusinessLogic.Abstractions;
 using CarRenting.DataAccess.Abstractions;
-using CarRenting.Models.Entities;
-using Microsoft.AspNetCore.Identity;
+using FluentEmail.Core;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace CarRenting.BusinessLogic;
 
 public class ServiceFactory : IServiceFactory
 {
-    // private readonly Lazy<ICompanyService> _companyService;
-    private readonly Lazy<IAuthenticationService> _authenticationService;
+    private readonly Lazy<IEmailSender> _emailService;
 
     public ServiceFactory(
         IUnitOfWork unitOfWork,
-        UserManager<User> userManager
+        IFluentEmail fluentEmail
     )
     {
-        // _companyService = new Lazy<ICompanyService>(() => new CompanyService(unitOfWork));
-        _authenticationService = new Lazy<IAuthenticationService>(() => new AuthenticationService(userManager));
+        _emailService = new Lazy<IEmailSender>(() => new EmailService(fluentEmail));
     }
 
-    // public ICompanyService Company => _companyService.Value;
-    public IAuthenticationService AuthenticationService => _authenticationService.Value;
+    public IEmailSender Email => _emailService.Value;
 }

@@ -3,6 +3,7 @@ using CarRenting.BusinessLogic.Abstractions;
 using CarRenting.DataAccess;
 using CarRenting.DataAccess.Abstractions;
 using CarRenting.Models.Entities;
+using CarRenting.Models.SettingModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace CarRenting.Web.Extensions
@@ -47,6 +48,24 @@ namespace CarRenting.Web.Extensions
                 })
                 .AddEntityFrameworkStores<CarRentingDbContext>()
                 .AddDefaultTokenProviders();
+        }
+
+        public static void AddFluentEmail(this IServiceCollection services, IConfiguration
+            configuration)
+        {
+            var emailConfiguration = new EmailConfiguration();
+            services.Configure<EmailConfiguration>(configuration.GetSection(emailConfiguration.Section));
+
+            var emailSettings = configuration.GetSection(emailConfiguration.Section);
+
+            services
+                .AddFluentEmail(emailSettings["DefaultFromEmail"])
+                .AddSmtpSender(
+                    emailSettings["SmtpHost"],
+                    emailSettings.GetValue<int>("Port"),
+                    emailSettings["BusinessEmail"],
+                    emailSettings["Password"])
+                .AddRazorRenderer();
         }
     }
 }
