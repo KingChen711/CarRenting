@@ -7,7 +7,9 @@ namespace CarRenting.DataAccess;
 
 public class CarRentingDbContext : IdentityDbContext<User>
 {
-    public CarRentingDbContext(DbContextOptions options) : base(options) { }
+    public CarRentingDbContext(DbContextOptions options) : base(options)
+    {
+    }
 
     //public DbSet<Company>? Companies { get; set; }
 

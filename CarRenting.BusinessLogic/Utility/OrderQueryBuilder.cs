@@ -25,6 +25,7 @@ public static class OrderQueryBuilder
 
             orderQueryBuilder.Append($"{objectProperty.Name} {direction}, ");
         }
+
         var orderQuery = orderQueryBuilder.ToString().TrimEnd(',', ' ');
         return orderQuery;
     }

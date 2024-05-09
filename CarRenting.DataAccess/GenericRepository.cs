@@ -14,11 +14,11 @@ namespace CarRenting.DataAccess
         public IQueryable<T> FindAll(bool trackChanges) => Context.Set<T>();
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges) =>
-            !trackChanges ?
-                Context.Set<T>()
+            !trackChanges
+                ? Context.Set<T>()
                     .Where(expression)
-                    .AsNoTracking() :
-                Context.Set<T>()
+                    .AsNoTracking()
+                : Context.Set<T>()
                     .Where(expression);
 
         public void Create(T entity) => Context.Set<T>().Add(entity);
@@ -35,5 +35,4 @@ namespace CarRenting.DataAccess
 
         public Task<bool> AnyAsync(Expression<Func<T, bool>> expression) => Context.Set<T>().AnyAsync(expression);
     }
-
 }

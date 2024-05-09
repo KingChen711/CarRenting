@@ -17,7 +17,7 @@ public class EmailService : IEmailSender
         await _fluentEmail
             .To(toEmail)
             .Subject(subject)
-            .Body(message)
+            .Body(message, true)
             .SendAsync();
     }
 }
