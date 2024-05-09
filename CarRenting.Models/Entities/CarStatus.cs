@@ -11,7 +11,7 @@ public class CarStatus
 
     [DisplayName("Status name")]
     [MaxLength(20)]
-    public Guid Name { get; set; } //UNIQUE
+    public string Name { get; set; } = null!; //UNIQUE
 
     //navigator
     public ICollection<Car> Cars { get; set; } = new List<Car>();

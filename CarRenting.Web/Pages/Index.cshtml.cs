@@ -13,7 +13,6 @@ namespace CarRenting.Web.Pages
 
         public void OnGet()
         {
-
         }
     }
 }

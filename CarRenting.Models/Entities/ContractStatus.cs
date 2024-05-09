@@ -12,7 +12,7 @@ public class ContractStatus
 
     [DisplayName("Status name")]
     [MaxLength(20)]
-    public Guid Name { get; set; } //UNIQUE
+    public string Name { get; set; } = null!; //UNIQUE
 
     //navigator
     public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
