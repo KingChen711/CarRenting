@@ -28,9 +28,9 @@ public class Car
     [DisplayName("License plate")]
     public string LicensePlate { get; set; } = null!; //biển số xe
 
-    [DisplayName("Status")] public int CarStatusId { get; set; }
+    [DisplayName("Status")] public Guid CarStatusId { get; set; }
 
     //navigator
     public CarStatus CarStatus { get; set; } = null!;
-    //public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
+    public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
 }

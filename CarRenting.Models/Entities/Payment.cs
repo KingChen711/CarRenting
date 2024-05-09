@@ -15,7 +15,7 @@ public class Payment
     [Range(0, int.MaxValue)]
     [Display(Name = "Rest Payment")]
     public int RestPayment { get; set; } // Do là đặt cọc, nên đặt tên prop này là rest cost
-    
+
     //navigator
-    public Contract? Contract { get; set; } //TODO:Cân nhắc: khi OnDelete,nếu chọn Cascade thì nên là "Contract", SetNull thì sẽ là "Contract?"
+    public Contract Contract { get; set; } = null!;
 }

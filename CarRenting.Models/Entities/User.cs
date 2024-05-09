@@ -7,6 +7,6 @@ namespace CarRenting.Models.Entities
         public Guid UserId { get; set; }
 
         //navigator
-        //public ICollection<Contract> Contracts { get; set; } = new List<Contract>(); //Lưu ý: Chỉ có role customer mới có Contracts
+        public ICollection<Contract> Contracts { get; set; } = new List<Contract>(); //Lưu ý: Chỉ có role customer mới có Contracts
     }
 }

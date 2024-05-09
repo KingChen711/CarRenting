@@ -18,9 +18,10 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
             .IsUnique();
 
         builder
-            .HasOne(e => e.CarStatus)
-            .WithMany(e => e.Cars)
-            .HasForeignKey(e => e.CarStatusId)
+        .HasOne(d => d.CarStatus)
+            .WithMany(p => p.Cars)
+            .HasPrincipalKey(p => p.CarStatusId)
+            .HasForeignKey(d => d.CarStatusId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -10,10 +10,10 @@ public class Feedback
 
     [Range(1, 5, ErrorMessage = "Rate value should be between 1 and 5")]
     public int Rate { get; set; }
-    
+
     [MaxLength(1000, ErrorMessage = "Comment should be less than 1000 characters")]
     public string? Comment { get; set; }
-    
+
     //navigator
-    public Contract? Contract { get; set; } //TODO:Cân nhắc: khi OnDelete,nếu chọn Cascade thì nên là "Contract", SetNull thì sẽ là "Contract?"
+    public Contract Contract { get; set; } = null!;
 }
