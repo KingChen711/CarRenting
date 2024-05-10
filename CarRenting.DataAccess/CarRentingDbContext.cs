@@ -1,13 +1,20 @@
-﻿using CarRenting.DataAccess.Configurations;
+﻿using System.Reflection;
+using CarRenting.DataAccess.Configurations;
 using CarRenting.Models.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace CarRenting.DataAccess;
 
 public class CarRentingDbContext : IdentityDbContext<User, Role, int>
 {
     public CarRentingDbContext(DbContextOptions options) : base(options)
+    {
+    }
+
+    public CarRentingDbContext()
     {
     }
 
@@ -18,6 +25,23 @@ public class CarRentingDbContext : IdentityDbContext<User, Role, int>
     public DbSet<Feedback>? Feedbacks { get; set; }
     public DbSet<Payment>? Payments { get; set; }
     //không cần tạo DbSet cho User và Role
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(GetBasePath())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+        optionsBuilder.UseSqlServer(configuration.GetConnectionString("CarRentingDbContextConnection"));
+    }
+
+    private string GetBasePath()
+    {
+        string currentDirectory = Directory.GetCurrentDirectory();
+        DirectoryInfo directoryInfo = new DirectoryInfo(currentDirectory);
+        return Path.Combine(directoryInfo.Parent!.FullName, "CarRenting.Web");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
