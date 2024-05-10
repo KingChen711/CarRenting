@@ -5,6 +5,7 @@ using CarRenting.DataAccess.Abstractions;
 using CarRenting.Models.Entities;
 using CarRenting.Models.SettingModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRenting.Web.Extensions
 {
