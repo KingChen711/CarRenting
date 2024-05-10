@@ -28,6 +28,10 @@ public class Car
     [DisplayName("License plate")]
     public string LicensePlate { get; set; } = null!; //biển số xe
 
+    // ReSharper disable once EntityFramework.ModelValidation.UnlimitedStringLength
+    [IsSerializedArrayOfUrls]
+    public string Images { get; set; } = "[]";
+
     [DisplayName("Status")] public Guid CarStatusId { get; set; }
 
     //navigator
