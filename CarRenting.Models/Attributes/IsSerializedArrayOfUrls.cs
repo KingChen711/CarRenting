@@ -4,7 +4,7 @@ namespace CarRenting.Models.Attributes;
 
 public class IsSerializedArrayOfUrlsAttribute : ValidationAttribute
 {
-    protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
         if (value == null)
         {
@@ -16,7 +16,7 @@ public class IsSerializedArrayOfUrlsAttribute : ValidationAttribute
             return new ValidationResult($"{validationContext.DisplayName} must be a string.");
         }
 
-        var urls = stringValue.Split(';'); // Assuming ';' is the delimiter for serialized URLs
+        var urls = stringValue.Split(','); // Assuming ',' is the delimiter for serialized URLs
 
         foreach (var url in urls)
         {
